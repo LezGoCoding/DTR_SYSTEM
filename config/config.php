@@ -11,7 +11,7 @@
 require_once __DIR__ . '/../vendor/autoload.php'; 
 
 // Load the .env file 
-$dotenv = Dotenv\Dotenv::createImmutable('C:\xampp\htdocs\DTR_SYSTEM\crud_private_env');// Use this if in production /var/www/private
+$dotenv = Dotenv\Dotenv::createImmutable('C:\xampp\htdocs\Github\DTR_SYSTEM\crud_private_env');// Use this if in production /var/www/private
 $dotenv->load();
 
 // Get the timezone from the environment variable
@@ -68,7 +68,7 @@ $appEnv = $_ENV['APP_ENV'] ?: 'development';
 if ($appEnv === 'production') {
     defined('LOG_FILE') ? null : define('LOG_FILE', '/home/ssc-smis.ph/asset.ssc-smis.ph/logs/errlogs.log');
 } else {
-    defined('LOG_FILE') ? null : define('LOG_FILE', 'C:/xampp/htdocs/asset.ssc-smis.ph/logs/errlogs.log');
+    defined('LOG_FILE') ? null : define('LOG_FILE', 'C:/xampp/htdocs/Github/DTR_SYSTEM/logs/errlogs.log');
 }
 
 // Environment-specific configurations
