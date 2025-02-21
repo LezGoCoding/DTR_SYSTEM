@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2025 at 02:57 AM
+-- Generation Time: Feb 21, 2025 at 09:32 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -24,33 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employeetble`
+-- Table structure for table `dtr_employeetble`
 --
 
-CREATE TABLE `employeetble` (
-  `EMPID` int(11) NOT NULL,
-  `USERID` int(11) NOT NULL
+CREATE TABLE `dtr_employeetble` (
+  `EMPID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `loggs`
+-- Table structure for table `dtr_timelog`
 --
 
-CREATE TABLE `loggs` (
-  `LOGID` int(11) NOT NULL,
-  `EMPID` int(11) NOT NULL,
-  `ACCOUNT_ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `timelog`
---
-
-CREATE TABLE `timelog` (
+CREATE TABLE `dtr_timelog` (
   `TIMEID` int(11) NOT NULL,
   `EMPID` int(11) NOT NULL,
   `TIME_IN` int(11) NOT NULL,
@@ -60,19 +47,50 @@ CREATE TABLE `timelog` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `dtr_user`
 --
 
-CREATE TABLE `user` (
+CREATE TABLE `dtr_user` (
   `USERID` int(11) NOT NULL,
-  `USER_NAME` varchar(30) NOT NULL,
+  `FULLNAME` text NOT NULL,
   `FNAME` varchar(30) NOT NULL,
-  `LNAME` varchar(30) NOT NULL,
   `MNAME` varchar(30) NOT NULL,
-  `CONTACT` int(30) NOT NULL,
+  `LNAME` varchar(30) NOT NULL,
+  `CONTACT` varchar(30) NOT NULL,
   `ADDRESS` varchar(30) NOT NULL,
-  `EMPID` int(30) NOT NULL,
-  `PASSWORD` varchar(30) NOT NULL
+  `EMPID` varchar(30) NOT NULL,
+  `PASSWORD` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `dtr_user`
+--
+
+INSERT INTO `dtr_user` (`USERID`, `FULLNAME`, `FNAME`, `MNAME`, `LNAME`, `CONTACT`, `ADDRESS`, `EMPID`, `PASSWORD`) VALUES
+(1, 'gan,james emmanuel', 'james emmanuel', 'gan', 'ramirez', '987456', 'payao', '123', '*23AE809DDACAF96AF0FD78ED04B6A');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `loginattemp`
+--
+
+CREATE TABLE `loginattemp` (
+  `ATTEMPID` int(11) NOT NULL,
+  `IPADDRESS` varchar(100) NOT NULL,
+  `ATTEMPCOUNT` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_logs`
+--
+
+CREATE TABLE `tbl_logs` (
+  `LOGID` int(11) NOT NULL,
+  `EMPID` int(11) NOT NULL,
+  `ACCOUNT_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -80,44 +98,56 @@ CREATE TABLE `user` (
 --
 
 --
--- Indexes for table `employeetble`
+-- Indexes for table `dtr_employeetble`
 --
-ALTER TABLE `employeetble`
+ALTER TABLE `dtr_employeetble`
   ADD PRIMARY KEY (`EMPID`);
 
 --
--- Indexes for table `loggs`
+-- Indexes for table `dtr_user`
 --
-ALTER TABLE `loggs`
-  ADD PRIMARY KEY (`LOGID`);
+ALTER TABLE `dtr_user`
+  ADD PRIMARY KEY (`USERID`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `loginattemp`
 --
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`USERID`);
+ALTER TABLE `loginattemp`
+  ADD PRIMARY KEY (`ATTEMPID`);
+
+--
+-- Indexes for table `tbl_logs`
+--
+ALTER TABLE `tbl_logs`
+  ADD PRIMARY KEY (`LOGID`);
 
 --
 -- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT for table `employeetble`
+-- AUTO_INCREMENT for table `dtr_employeetble`
 --
-ALTER TABLE `employeetble`
+ALTER TABLE `dtr_employeetble`
   MODIFY `EMPID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `loggs`
+-- AUTO_INCREMENT for table `dtr_user`
 --
-ALTER TABLE `loggs`
-  MODIFY `LOGID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `dtr_user`
+  MODIFY `USERID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `loginattemp`
 --
-ALTER TABLE `user`
-  MODIFY `USERID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `loginattemp`
+  MODIFY `ATTEMPID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_logs`
+--
+ALTER TABLE `tbl_logs`
+  MODIFY `LOGID` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
